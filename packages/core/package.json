@@ -1,0 +1,91 @@
+{
+  "name": "@thermal-label/marklife-core",
+  "version": "0.0.1",
+  "description": "Protocol encoders, device and media registries for the Marklife / Deli / AbleMark family of thermal label printers",
+  "keywords": [
+    "marklife",
+    "deli",
+    "feioou",
+    "ablemark",
+    "yxq",
+    "l11",
+    "cpcl",
+    "tspl",
+    "escpos",
+    "jbig",
+    "label-printer",
+    "thermal-label",
+    "thermal-printer"
+  ],
+  "type": "module",
+  "author": "Mannes Brak",
+  "license": "MIT",
+  "homepage": "https://thermal-label.github.io/marklife/core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thermal-label/marklife.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/thermal-label/marklife/issues"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/mannes"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/mannes"
+    }
+  ],
+  "files": [
+    "dist",
+    "src",
+    "!src/__tests__",
+    "data/devices.json",
+    "data/media.json",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "compile-data": "node scripts/compile-data.mjs",
+    "prebuild": "pnpm run compile-data",
+    "pretypecheck": "pnpm run compile-data",
+    "pretest": "pnpm run compile-data",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@mbtech-nl/bitmap": "^1.3.0",
+    "@thermal-label/contracts": "^0.6.1",
+    "@thermal-label/escpos-core": "^0.2.1",
+    "@thermal-label/tspl-core": "^0.2.0",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "@mbtech-nl/tsconfig": "^1.1.0",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "json5": "^2.2.3",
+    "@types/pako": "^2.0.3",
+    "typescript": "~5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

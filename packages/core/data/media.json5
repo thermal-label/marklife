@@ -1,0 +1,245 @@
+// Marklife media catalogue. Continuous thermal sticker stock plus
+// gap / die-cut label stock. No tape cassettes (D1-style), no RFID
+// cassettes, no black-line stock in the YXQ media range.
+//
+// `targetModels` taxonomy is marklife-internal: head-size class.
+//
+//   - 'narrow-tape'    — 0.5" class (P12, P15, R15, A1, BARABOGOP12, …)
+//   - 'mobile-2in'     — 2" class (S2, P50, X2, M50, M57, M60, T2, ETZ0535, JAMMUK_S2, LPW40, …)
+//   - 'desktop-3in'    — 3" class (TBD members)
+//   - 'industrial-4in' — 4" class (D210, X8, U210, …)
+//
+// `skus` holds *retailer* product codes (Amazon ASIN, TVCMALL item no.)
+// because this range ships no manufacturer part numbers — Marklife's own
+// store lists rolls by size only. Each entry carries a one-line comment
+// naming the listing the size came from.
+[
+  {
+    key: 'CONTINUOUS_15MM',
+    id: 'continuous-15mm',
+    name: '15 mm Continuous Sticker Roll',
+    category: 'continuous',
+    widthMm: 15,
+    type: 'continuous',
+    targetModels: ['narrow-tape'],
+    skus: [],
+  },
+  // Marklife's own P12 refill, "0.47 × 1.57 in"; also stocked by TVCMALL
+  // for P12/P15 in a dozen colourways. The most common narrow-tape size.
+  {
+    key: 'GAP_12X40',
+    id: 'gap-12x40',
+    name: '12 × 40 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 12,
+    heightMm: 40,
+    type: 'die-cut',
+    targetModels: ['narrow-tape'],
+    skus: ['B0B7N4Q297', '6104000181C', '6104000200A'],
+  },
+  // Marklife's own P12 refill in transparent, "0.55 × 1.57 in".
+  {
+    key: 'GAP_14X40',
+    id: 'gap-14x40',
+    name: '14 × 40 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 14,
+    heightMm: 40,
+    type: 'die-cut',
+    targetModels: ['narrow-tape'],
+    skus: ['B0B7N589FV'],
+  },
+  // The roll the P15 ships with; aftermarket 210-label rolls sold for
+  // P12/P15/Deli Q2.
+  {
+    key: 'GAP_15X30',
+    id: 'gap-15x30',
+    name: '15 × 30 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 15,
+    heightMm: 30,
+    type: 'die-cut',
+    targetModels: ['narrow-tape'],
+    skus: ['B0GXNT4SWC'],
+  },
+  // D30/P15-family die-cut; several independent aftermarket rolls name
+  // Marklife P12/P15 (130–390 labels depending on pack).
+  {
+    key: 'GAP_15X50',
+    id: 'gap-15x50',
+    name: '15 × 50 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 15,
+    heightMm: 50,
+    type: 'die-cut',
+    targetModels: ['narrow-tape'],
+    skus: ['B0F388PVCP', 'B0G2M2QYS1'],
+  },
+  // Cable flag: 74 mm printable + 35 mm clear wrap tail = 109 mm pitch,
+  // 65/roll. Sold for P12/P15/P50 and as the D30-family wire label.
+  // Stock is 12.5 mm wide, not 12 — it is the widest narrow-tape die-cut.
+  {
+    key: 'CABLE_FLAG_12_5X109',
+    id: 'cable-flag-12-5x109',
+    name: '12.5 × 109 mm Cable Flag Label',
+    category: 'multi-purpose',
+    widthMm: 12.5,
+    heightMm: 109,
+    type: 'die-cut',
+    targetModels: ['narrow-tape'],
+    skus: ['B08JPZ8T7Q'],
+  },
+  {
+    key: 'CONTINUOUS_50MM',
+    id: 'continuous-50mm',
+    name: '50 mm Continuous Sticker Roll',
+    category: 'continuous',
+    widthMm: 50,
+    type: 'continuous',
+    targetModels: ['mobile-2in'],
+    skus: [],
+  },
+  {
+    key: 'GAP_50X30',
+    id: 'gap-50x30',
+    name: '50 × 30 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 50,
+    heightMm: 30,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0B5SSYFR3'],
+  },
+  {
+    key: 'GAP_40X30',
+    id: 'gap-40x30',
+    name: '40 × 30 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 40,
+    heightMm: 30,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0B5STKZ6Z', '6104000177A'],
+  },
+  // Bundled with the P50 as "1.57 × 0.78 in clear gap" (P50 manual);
+  // aftermarket 300–310 label rolls carry the same size.
+  {
+    key: 'GAP_40X20',
+    id: 'gap-40x20',
+    name: '40 × 20 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 40,
+    heightMm: 20,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0F4N5DD77', 'B0BMPWTGRT', '6104000175B'],
+  },
+  // Marklife's own P50 label, "1.57 × 2.36 in", 125/roll.
+  {
+    key: 'GAP_40X60',
+    id: 'gap-40x60',
+    name: '40 × 60 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 40,
+    heightMm: 60,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0B5SSXV9H'],
+  },
+  // Bundled with the P50 as a 2 × 2 in circle gap (P50 manual); sold both
+  // square and round on the same 50 mm liner, 150/roll.
+  {
+    key: 'GAP_50X50',
+    id: 'gap-50x50',
+    name: '50 × 50 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 50,
+    heightMm: 50,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0BMPWY46Y', '6104000203K'],
+  },
+  // 50 × 80 mm — the largest 2"-class die-cut found, on two independent
+  // sellers for the P50; they disagree on the count (95 vs 100/roll).
+  {
+    key: 'GAP_50X80',
+    id: 'gap-50x80',
+    name: '50 × 80 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 50,
+    heightMm: 80,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['B0GXJZVKHV'],
+  },
+  // 40 × 40 mm round die-cut on 40 mm liner, sold for the P50 in white
+  // (160/roll) and transparent (170/roll). Single seller, two SKUs.
+  {
+    key: 'ROUND_40X40',
+    id: 'round-40x40',
+    name: '40 × 40 mm Round Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 40,
+    heightMm: 40,
+    type: 'die-cut',
+    targetModels: ['mobile-2in'],
+    skus: ['6104000178A', '6104000179A'],
+  },
+  {
+    key: 'CONTINUOUS_100MM',
+    id: 'continuous-100mm',
+    name: '100 mm Continuous Sticker Roll',
+    category: 'continuous',
+    widthMm: 100,
+    type: 'continuous',
+    targetModels: ['industrial-4in'],
+    skus: [],
+  },
+  {
+    key: 'SHIPPING_100X150',
+    id: 'shipping-100x150',
+    name: '100 × 150 mm Shipping Label',
+    category: 'shipping',
+    widthMm: 100,
+    heightMm: 150,
+    type: 'die-cut',
+    targetModels: ['industrial-4in'],
+    skus: [],
+  },
+  // The next three are the other sizes Marklife's own "D100 Label" page
+  // lists (all 500/roll) alongside the 4 × 6 in default. Single-source:
+  // the manufacturer, unseen on marketplace listings.
+  {
+    key: 'GAP_100X100',
+    id: 'gap-100x100',
+    name: '100 × 100 mm Gap Stock',
+    category: 'shipping',
+    widthMm: 100,
+    heightMm: 100,
+    type: 'die-cut',
+    targetModels: ['industrial-4in'],
+    skus: [],
+  },
+  {
+    key: 'GAP_70X50',
+    id: 'gap-70x50',
+    name: '70 × 50 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 70,
+    heightMm: 50,
+    type: 'die-cut',
+    targetModels: ['industrial-4in'],
+    skus: [],
+  },
+  {
+    key: 'GAP_60X40',
+    id: 'gap-60x40',
+    name: '60 × 40 mm Gap Stock',
+    category: 'multi-purpose',
+    widthMm: 60,
+    heightMm: 40,
+    type: 'die-cut',
+    targetModels: ['industrial-4in'],
+    skus: [],
+  },
+]

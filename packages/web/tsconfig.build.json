@@ -1,0 +1,11 @@
+{
+  // Build config. Tests stay out of `dist` and therefore out of the
+  // published tarball: they import Node builtins deliberately, as
+  // independent oracles for what the source produces, and that has no
+  // place in a browser consumer's package.
+  //
+  // `typecheck` still runs against `tsconfig.json`, so the tests keep
+  // their type coverage.
+  "extends": "./tsconfig.json",
+  "exclude": ["src/**/*.test.ts", "src/__tests__"]
+}

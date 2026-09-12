@@ -1,0 +1,42 @@
+// S8 — YXQ-stream proprietary (protocol id 1).
+// Classic-Bluetooth SPP only. 2-inch class.
+{
+  key: 'S8',
+  name: 'S8',
+  family: 'marklife',
+  transports: {
+    'bluetooth-spp': { namePrefix: 'S8' },
+  'bluetooth-gatt': {
+    // Profile A is the family's primary GATT profile. The chassis
+    // does NOT advertise it — the advertisement carries only a
+    // vendor UUID (observed over the air with a BlueZ LE scan,
+    // 2026-09-10) — so the picker must filter on the name and the
+    // driver resolves the profile after connecting. marklife-web
+    // probes A, then the Microchip transparent-UART profile, then
+    // Profile C; see web/src/ble-profiles.ts.
+    serviceUuid: '0000ff00-0000-1000-8000-00805f9b34fb',
+    txCharacteristicUuid: '0000ff02-0000-1000-8000-00805f9b34fb',
+    rxCharacteristicUuid: '0000ff01-0000-1000-8000-00805f9b34fb',
+    // BLE advertises as the SPP name plus a `_BLE` suffix
+    // (`P12_ZA15B` / `P12_ZA15B_BLE`), so the SPP prefix matches both.
+    namePrefix: 'S8',
+  },
+  },
+  engines: [
+    {
+      role: 'primary',
+      protocol: 'marklife-yxq',
+      dpi: 203,
+      headDots: 384, // best-guess for 2" class (8 dots/mm × ~48 mm) — TODO confirm against datasheet
+      capabilities: {
+        bitPolarity: '1=dark',
+        compression: 'zlib',
+        protocolId: 1,
+        physicalSizeClass: 2.0,
+        realSeries: 'S8',
+        bleProfile: null,
+      },
+    },
+  ],
+  support: { status: 'untested' },
+}

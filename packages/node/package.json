@@ -1,0 +1,78 @@
+{
+  "name": "@thermal-label/marklife-node",
+  "version": "0.0.1",
+  "description": "Node.js driver (Bluetooth SPP, USB) for the Marklife / Deli / AbleMark family of thermal label printers",
+  "keywords": [
+    "marklife",
+    "deli",
+    "feioou",
+    "ablemark",
+    "yxq",
+    "l11",
+    "label-printer",
+    "thermal-label",
+    "thermal-printer",
+    "bluetooth",
+    "usb",
+    "node"
+  ],
+  "type": "module",
+  "author": "Mannes Brak",
+  "license": "MIT",
+  "homepage": "https://thermal-label.github.io/marklife/node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thermal-label/marklife.git",
+    "directory": "packages/node"
+  },
+  "bugs": {
+    "url": "https://github.com/thermal-label/marklife/issues"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/mannes"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/mannes"
+    }
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@thermal-label/contracts": "^0.6.1",
+    "@thermal-label/marklife-core": "workspace:*",
+    "@thermal-label/transport": "^0.6.0"
+  },
+  "devDependencies": {
+    "@mbtech-nl/tsconfig": "^1.1.0",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "typescript": "~5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

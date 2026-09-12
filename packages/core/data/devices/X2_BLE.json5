@@ -1,0 +1,40 @@
+// X2 (BLE) — YXQ-stream over BLE Profile C (0xFD00 service).
+// Same chassis as the Classic-SPP X2 but reachable via BLE GATT,
+// and a different protocol id (8) with a different job
+// shape: id 8 rasters zlib-compressed behind `1F 10 …`, the
+// Classic-SPP X2 (id 9) sends raw rows behind `1D 76 30 …`.
+{
+  key: 'X2_BLE',
+  name: 'X2 (BLE)',
+  family: 'marklife',
+  transports: {
+    'bluetooth-gatt': {
+      serviceUuid: '0000fd00-0000-1000-8000-00805f9b34fb',
+      txCharacteristicUuid: '0000fd01-0000-1000-8000-00805f9b34fb',
+      rxCharacteristicUuid: '0000fd02-0000-1000-8000-00805f9b34fb',
+      namePrefix: 'X2',
+    },
+  },
+  engines: [
+    {
+      role: 'primary',
+      protocol: 'marklife-yxq',
+      dpi: 203,
+      headDots: 384, // best-guess for 2" class — TODO confirm against datasheet
+      capabilities: {
+        bitPolarity: '1=dark',
+        compression: 'zlib',
+        protocolId: 8,
+        physicalSizeClass: 2.0,
+        realSeries: 'X2',
+        bleProfile: 'C',
+        // The X2 chassis drains its intake at 1 ms per packet, not the
+        // family's 30 (thermoprint § 2.5 timer table); unbenched.
+        interChunkDelayMs: 1,
+        // No redBlackDuplex: id 8 has no second-plane command in its
+        // vocabulary.
+      },
+    },
+  ],
+  support: { status: 'untested' },
+}

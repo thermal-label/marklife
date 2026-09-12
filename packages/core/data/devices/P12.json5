@@ -1,0 +1,56 @@
+// P12 — L11 binary protocol (protocol id 11). Narrow-tape
+// ~0.5" class. Triple transport: USB Printer-class, Classic-BT SPP,
+// and BLE GATT (the `P12_xxxxx_BLE` advertisement, ff00 service).
+//
+// Protocol confirmed against public prior art (tomLadder/thermoprint
+// REVERSE_ENGINEERING.md § 3.2) and bench-tested over USB, BLE and
+// SPP — the P12 ack's 0xAA on success. The earlier marklife-yxq
+// binding (protocol id 4) was a mis-read: the P12 never rendered a
+// yxq raster. The USB interface is bench-confirmed: it enumerates as
+// a USB Printer-class device (bulk EP 0x01) and prints the same
+// stream. See DECISIONS.md § D5.
+{
+  key: 'P12',
+  name: 'P12',
+  family: 'marklife',
+  transports: {
+    usb: { vid: '0x09c7', pid: '0x0011' },
+    'bluetooth-spp': { namePrefix: 'P12' },
+    'bluetooth-gatt': {
+      serviceUuid: '0000ff00-0000-1000-8000-00805f9b34fb',
+      txCharacteristicUuid: '0000ff02-0000-1000-8000-00805f9b34fb',
+      rxCharacteristicUuid: '0000ff01-0000-1000-8000-00805f9b34fb',
+      namePrefix: 'P12',
+    // Vendor caps this family at 90 bytes per BLE packet
+    // regardless of the negotiated MTU. Bench-confirmed on the S2
+    // 2026-09-11: a job sent in 95-byte packets prints, the same
+    // job in 176-byte packets (MTU 179 minus the ATT header) does
+    // not. Treated as a hard ceiling, never raised by negotiation.
+    mtu: 90,
+    },
+  },
+  engines: [
+    {
+      role: 'primary',
+      protocol: 'marklife-l11',
+      dpi: 203,
+      headDots: 96, // 12 bytes/row in a captured P12 job (BLE HCI)
+      capabilities: {
+        bitPolarity: '1=dark',
+        compression: 'none', // L11 sends a raw uncompressed GS v 0 raster
+        protocolId: 11, // L11 — thermoprint § 3.1 lists it as id 11
+        physicalSizeClass: 0.5,
+        realSeries: 'P12',
+        bleProfile: 'A',
+      },
+    },
+  ],
+  support: { status: 'verified' },
+  verifications: {
+    // Maintainer's own bench — no external report/issue; all three
+    // through the harness 2026-09-13. Classic pairing PIN 1234.
+    usb: { status: 'verified', lastReported: '2026-09-13' },
+    'bluetooth-spp': { status: 'verified', lastReported: '2026-09-13' },
+    'bluetooth-gatt': { status: 'verified', lastReported: '2026-09-13' },
+  },
+}

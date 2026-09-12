@@ -1,0 +1,84 @@
+{
+  "name": "@thermal-label/marklife-web",
+  "version": "0.0.1",
+  "description": "Browser driver (Web Bluetooth, WebUSB, Web Serial) for the Marklife / Deli / AbleMark family of thermal label printers",
+  "keywords": [
+    "marklife",
+    "deli",
+    "feioou",
+    "ablemark",
+    "yxq",
+    "l11",
+    "label-printer",
+    "thermal-label",
+    "thermal-printer",
+    "web-bluetooth",
+    "webusb",
+    "web-serial",
+    "browser"
+  ],
+  "license": "MIT",
+  "author": "Mannes Brak",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thermal-label/marklife.git",
+    "directory": "packages/web"
+  },
+  "bugs": {
+    "url": "https://github.com/thermal-label/marklife/issues"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/mannes"
+    },
+    {
+      "type": "ko-fi",
+      "url": "https://ko-fi.com/mannes"
+    }
+  ],
+  "homepage": "https://thermal-label.github.io/marklife/web",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@thermal-label/contracts": "^0.6.1",
+    "@thermal-label/marklife-core": "workspace:*",
+    "@thermal-label/transport": "^0.6.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0"
+  },
+  "devDependencies": {
+    "@mbtech-nl/tsconfig": "^1.1.0",
+    "@types/w3c-web-usb": "^1.0.0",
+    "@types/web-bluetooth": "^0.0.20",
+    "@vitest/coverage-v8": "^2.0.0",
+    "jsdom": "^26.0.0",
+    "typescript": "~5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
