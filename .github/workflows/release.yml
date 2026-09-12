@@ -26,7 +26,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '24'
-          cache: 'pnpm'
+          # No dependency cache in the publish job (setup-node's trusted-
+          # publishing guidance: keep credentials out of cache scope).
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
@@ -51,10 +52,16 @@ jobs:
       - name: Test
         run: pnpm test
 
+      # Publishes through npm Trusted Publishing (OIDC): no token, the
+      # `id-token: write` permission above is what authenticates. pnpm
+      # hands the packed tarball to the npm CLI on PATH, and OIDC needs
+      # npm >= 11.5.1, so make sure of the CLI rather than trust the
+      # runner's bundled copy.
+      - name: Ensure an OIDC-capable npm
+        run: npm install -g npm@^11 && npm --version
+
       - name: Publish
         run: pnpm publish -r --access public --no-git-checks --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         if: github.event_name == 'push'
