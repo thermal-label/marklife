@@ -1,6 +1,6 @@
 {
   "name": "@thermal-label/marklife-web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Browser driver (Web Bluetooth, WebUSB, Web Serial) for the Marklife / Deli / AbleMark family of thermal label printers",
   "keywords": [
     "marklife",

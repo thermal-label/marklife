@@ -1,6 +1,6 @@
 {
   "name": "@thermal-label/marklife-node",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js driver (Bluetooth SPP, USB) for the Marklife / Deli / AbleMark family of thermal label printers",
   "keywords": [
     "marklife",

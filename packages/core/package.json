@@ -1,6 +1,6 @@
 {
   "name": "@thermal-label/marklife-core",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Protocol encoders, device and media registries for the Marklife / Deli / AbleMark family of thermal label printers",
   "keywords": [
     "marklife",
