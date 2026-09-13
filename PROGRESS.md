@@ -240,6 +240,18 @@ green; only Step 9 enforces the 90% coverage floor.
       generator ported to the registry-backed version.
 - [x] Docs rewritten from the encoders: six protocol pages, hardware,
       guides, core API, verification checklist.
-- [ ] Re-bench P12, P15, S2 through the harness after the pacing move.
+- [x] Re-bench P12, P15, S2 through the harness after the pacing move
+      — every declared transport prints (BLE, SPP; USB on P12 / P15).
 - [ ] Credit-gate experiment: does 30 ms pacing print without the
       credit gate, and do credits print without pacing?
+- [ ] First print through `marklife-node` (`SerialTransport` /
+      `UsbTransport`).
+
+## Step 11 — 0.1.0 published (2026-09-13)
+
+- [x] Repository public; CI on Node 20 / 22 / 24 with Codecov.
+- [x] `0.0.1` published by hand to create the packages; `0.1.0`
+      released from the `v0.1.0` tag through npm trusted publishing
+      with provenance.
+- [x] `harness-marklife-v0.1.0` released; docs live at
+      <https://thermal-label.github.io/marklife/>.
